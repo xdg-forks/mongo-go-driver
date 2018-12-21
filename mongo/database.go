@@ -240,7 +240,7 @@ func (db *Database) ListCollections(ctx context.Context, filter interface{}, opt
 	cursor, err := driver.ListCollections(
 		ctx, cmd,
 		db.client.topology,
-		db.readSelector,
+		description.ReadPrefSelector(readpref.Primary()),
 		db.client.id,
 		db.client.topology.SessionPool,
 		opts...,
